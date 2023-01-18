@@ -37,6 +37,7 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
     );
     let data = await response.json();
     console.log(data);
+    window.location.reload();
   }
   return (
     <form action="http://localhost:5000/" onSubmit={postComment} method="GET">
