@@ -4,7 +4,7 @@ import HomePage from "./pages/home-page/home-page.component";
 import "./App.css";
 import PostPage from "./pages/post-page/post-page.component";
 import GlobalStyle from "./global.styles";
-import Header from "./header/header.component";
+import Header from "./components/header/header.component";
 
 export interface IPost {
   _id: string;

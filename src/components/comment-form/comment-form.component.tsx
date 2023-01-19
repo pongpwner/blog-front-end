@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import { Params } from "react-router";
+import styled from "styled-components";
+
+const Form = styled.form`
+  margin: 1rem auto;
+  width: 30rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+`;
 interface ICommentFormProps {
   readonly postId: Readonly<Params<string>>;
 }
@@ -40,26 +49,26 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
     window.location.reload();
   }
   return (
-    <form action="http://localhost:5000/" onSubmit={postComment} method="GET">
-      <label htmlFor="author">name:</label>
+    <Form action="http://localhost:5000/" onSubmit={postComment} method="GET">
       <input
         type="text"
         id="author"
         name="author"
         value={author}
         onChange={handleChange}
+        placeholder="name"
       />
       <textarea
         name="content"
         id=""
-        cols={30}
-        rows={10}
+        cols={50}
+        rows={5}
         value={content}
         placeholder="leave a comment"
         onChange={handleChange}
       ></textarea>
       <button type="submit">post comment</button>
-    </form>
+    </Form>
   );
 };
 

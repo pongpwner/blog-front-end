@@ -5,10 +5,17 @@ interface IContainerProps {
   justifyContent?: string;
   alignItems?: string;
   fontSize?: string;
+  minWidth?: string;
+  maxWidth?: string;
 }
 const Container = styled.div`
+  margin: 0 auto;
   font-size: ${(props: IContainerProps) =>
     props.fontSize ? props.fontSize : "1.6rem"};
+  min-width: ${(props: IContainerProps) =>
+    props.minWidth ? props.minWidth : "unset"};
+  max-width: ${(props: IContainerProps) =>
+    props.maxWidth ? props.maxWidth : "unset"};
 `;
 export const ContainerFlexCol = styled(Container)`
   display: flex;

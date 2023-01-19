@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { IPost } from "../../App";
 import { Params } from "react-router";
-import { convertTypeAcquisitionFromJson } from "typescript";
+import styled from "styled-components";
+import Container from "../container/container.styles";
+
+const Content = styled.p`
+  margin: 2rem;
+  text-align: start;
+`;
 interface IFocusedPostProps {
   readonly postId: Readonly<Params<string>>;
 }
@@ -28,15 +34,20 @@ const FocusedPost = ({ postId }: IFocusedPostProps) => {
     getPost();
   }, []);
   return currentPost ? (
-    <div>
+    <Container minWidth="15rem" maxWidth="70rem">
       <h1>{currentPost.title}</h1>
-      <span>{currentPost.timestamp.toString()}</span>
-      <section>
-        <p>{currentPost.content}</p>
-      </section>
-    </div>
+      <span>
+        {new Date(currentPost.timestamp).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </span>
+
+      <Content>{currentPost.content}</Content>
+    </Container>
   ) : (
-    <div>This post does not exist</div>
+    <Container>This post does not exist</Container>
   );
 };
 

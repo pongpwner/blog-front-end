@@ -2,6 +2,13 @@ import { isContentEditable } from "@testing-library/user-event/dist/utils";
 import React, { useState, useEffect } from "react";
 import { Params } from "react-router";
 import Comment from "../comment/comment.component";
+import styled from "styled-components";
+
+const ListContainer = styled.ul`
+  min-width: "15rem";
+  max-width: 50rem;
+  margin: 0 auto;
+`;
 export interface IComment {
   _id?: string;
   author: string;
@@ -35,17 +42,20 @@ const CommentList = ({ postId }: ICommentListProps) => {
     getComments();
   }, []);
   return commentList ? (
-    <ul>
-      {commentList.map((comment) => (
-        <Comment
-          author={comment.author}
-          content={comment.content}
-          timestamp={comment.timestamp}
-          postId={comment.postId}
-          _id={comment._id}
-        />
-      ))}
-    </ul>
+    <ListContainer>
+      {commentList
+        .slice(0)
+        .reverse()
+        .map((comment) => (
+          <Comment
+            author={comment.author}
+            content={comment.content}
+            timestamp={comment.timestamp}
+            postId={comment.postId}
+            _id={comment._id}
+          />
+        ))}
+    </ListContainer>
   ) : (
     <div>there are no comments</div>
   );

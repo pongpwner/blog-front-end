@@ -29,7 +29,7 @@ const PostList = () => {
 
   const [posts, setPosts] = useState<[IPost]>();
   return posts ? (
-    <Container as="ul">
+    <Container as="ul" minWidth="15rem">
       {posts.map((post) => (
         <Post
           title={post.title}
