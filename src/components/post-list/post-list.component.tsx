@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Post from "../post/post.components";
 import { IPost } from "../../App";
+import Container from "../container/container.styles";
+import styled from "styled-components";
+
 const PostList = () => {
   //fetch posts
   useEffect(() => {
@@ -26,7 +29,7 @@ const PostList = () => {
 
   const [posts, setPosts] = useState<[IPost]>();
   return posts ? (
-    <ul>
+    <Container as="ul">
       {posts.map((post) => (
         <Post
           title={post.title}
@@ -37,9 +40,9 @@ const PostList = () => {
           key={post._id}
         />
       ))}
-    </ul>
+    </Container>
   ) : (
-    <div>no posts</div>
+    <Container>no posts</Container>
   );
 };
 
