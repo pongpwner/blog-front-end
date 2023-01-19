@@ -7,6 +7,7 @@ import Container from "../container/container.styles";
 const Content = styled.p`
   margin: 2rem;
   text-align: start;
+  overflow-wrap: break-word;
 `;
 interface IFocusedPostProps {
   readonly postId: Readonly<Params<string>>;
