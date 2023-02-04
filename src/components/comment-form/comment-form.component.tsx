@@ -31,7 +31,7 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
   async function postComment(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     let response = await fetch(
-      `http://localhost:5000/posts/${postId.postId}/comments`,
+      `https://blog-api-production-9a5f.up.railway.app/posts/${postId.postId}/comments`,
       {
         method: "POST",
         credentials: "include",
@@ -49,7 +49,11 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
     window.location.reload();
   }
   return (
-    <Form action="http://localhost:5000/" onSubmit={postComment} method="GET">
+    <Form
+      action="https://blog-api-production-9a5f.up.railway.app"
+      onSubmit={postComment}
+      method="GET"
+    >
       <input
         type="text"
         id="author"

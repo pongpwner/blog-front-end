@@ -19,7 +19,7 @@ const FocusedPost = ({ postId }: IFocusedPostProps) => {
     console.log(postId);
     async function getPost() {
       let response = await fetch(
-        `http://localhost:5000/posts/${postId.postId}`,
+        `https://blog-api-production-9a5f.up.railway.app/posts/${postId.postId}`,
         {
           method: "GET",
           credentials: "include",

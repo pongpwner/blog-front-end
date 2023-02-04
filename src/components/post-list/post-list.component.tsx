@@ -7,15 +7,23 @@ import styled from "styled-components";
 const PostList = () => {
   //fetch posts
   useEffect(() => {
+    console.log(1);
     async function getPosts() {
-      let response = await fetch("http://localhost:5000/posts", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      //https://blog-api-production-9a5f.up.railway.app/posts/posts
+      //http://localhost:5000/posts/posts
+      let response = await fetch(
+        "https://blog-api-production-9a5f.up.railway.app/posts/",
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(2);
       let data = await response.json();
+      console.log(data);
 
       if (data.posts.length > 0) {
         let publishedPosts = data.posts.filter(
