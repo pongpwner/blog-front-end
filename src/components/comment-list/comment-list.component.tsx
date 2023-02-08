@@ -36,7 +36,7 @@ const CommentList = ({ postId }: ICommentListProps) => {
         }
       );
       let data = await response.json();
-      console.log(data);
+
       setCommentList(data.comments);
     }
     getComments();

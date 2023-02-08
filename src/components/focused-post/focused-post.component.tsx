@@ -16,7 +16,6 @@ interface IFocusedPostProps {
 const FocusedPost = ({ postId }: IFocusedPostProps) => {
   const [currentPost, setCurrentPost] = useState<IPost | null>(null);
   useEffect(() => {
-    console.log(postId);
     async function getPost() {
       let response = await fetch(
         `https://blog-api-production-9a5f.up.railway.app/posts/${postId.postId}`,
@@ -29,7 +28,7 @@ const FocusedPost = ({ postId }: IFocusedPostProps) => {
         }
       );
       let data = await response.json();
-      console.log(data);
+
       setCurrentPost(data.post);
     }
     getPost();
