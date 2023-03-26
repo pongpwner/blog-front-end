@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Global from "./components/styles/global.styled";
 import HomePage from "./pages/home-page/home-page.component";
-import "./App.css";
 import PostPage from "./pages/post-page/post-page.component";
-
+import styled from "styled-components";
 import Header from "./components/header.component";
 //https://blog-api-production-9a5f.up.railway.app
 export const origin = "http://localhost:5000";
@@ -14,9 +13,13 @@ export interface IPost {
   timestamp: Date;
   published: boolean;
 }
+const AppContainer = styled.div`
+  margin-top: 60px;
+`;
+
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
       <BrowserRouter>
         <Global></Global>
         <Header></Header>
@@ -25,7 +28,7 @@ function App() {
           <Route path="/posts/:postId" element={<PostPage />}></Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </AppContainer>
   );
 }
 

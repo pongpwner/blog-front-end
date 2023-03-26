@@ -7,11 +7,12 @@ export const HeaderContainer = styled.header`
   width: 100vw;
   top: 0;
   left: 0;
+  height: 6rem;
 `;
 export const Home = styled(Link)`
   font-weight: 900;
   font-size: 3rem;
   text-decoration: none;
-  color: white;
+  color: black;
   margin: 2rem 3rem;
 `;
