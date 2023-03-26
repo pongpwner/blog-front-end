@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Params } from "react-router";
-import styled from "styled-components";
-
-const Form = styled.form`
-  margin: 1rem auto;
-  width: 30rem;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
+import { Form } from "./styles/comment-form.styled";
+import { origin } from "../App";
 interface ICommentFormProps {
   readonly postId: Readonly<Params<string>>;
 }
@@ -30,30 +23,23 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
   }
   async function postComment(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    let response = await fetch(
-      `https://blog-api-production-9a5f.up.railway.app/posts/${postId.postId}/comments`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          author: author,
-          content: content,
-        }),
-      }
-    );
+    let response = await fetch(`${origin}/posts/${postId.postId}/comments`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        author: author,
+        content: content,
+      }),
+    });
     let data = await response.json();
 
     window.location.reload();
   }
   return (
-    <Form
-      action="https://blog-api-production-9a5f.up.railway.app"
-      onSubmit={postComment}
-      method="GET"
-    >
+    <Form action={`${origin}`} onSubmit={postComment} method="GET">
       <input
         type="text"
         id="author"

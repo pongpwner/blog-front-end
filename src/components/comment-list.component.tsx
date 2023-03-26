@@ -1,14 +1,9 @@
-import { isContentEditable } from "@testing-library/user-event/dist/utils";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Params } from "react-router";
-import Comment from "../comment/comment.component";
-import styled from "styled-components";
+import Comment from "./comment.component";
+import { origin } from "../App";
+import { ListContainer } from "./styles/comment-list.styled";
 
-const ListContainer = styled.ul`
-  min-width: "15rem";
-  max-width: 50rem;
-  margin: 0 auto;
-`;
 export interface IComment {
   _id?: string;
   author: string;
@@ -25,16 +20,13 @@ const CommentList = ({ postId }: ICommentListProps) => {
 
   useEffect(() => {
     async function getComments() {
-      let response = await fetch(
-        `https://blog-api-production-9a5f.up.railway.app/posts/${postId.postId}/comments/`,
-        {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      let response = await fetch(`${origin}/posts/${postId.postId}/comments/`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       let data = await response.json();
 
       setCommentList(data.comments);

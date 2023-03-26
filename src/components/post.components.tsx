@@ -1,28 +1,7 @@
-import React from "react";
-import { IPost } from "../../App";
-import { Link } from "react-router-dom";
-import { ContainerFlexCol } from "../container/container.styles";
-import styled from "styled-components";
+import { IPost } from "../App";
+import { ContainerFlexCol } from "./styles/container.styles";
+import { Li, Content, ViewPost } from "./styles/post.styled";
 
-const Li = styled.li`
-  border: 1px solid black;
-  margin: 1rem 3rem;
-  padding: 1rem;
-  min-width: 15rem;
-`;
-const Content = styled.p`
-  margin: 1rem 0;
-  overflow-wrap: break-word;
-`;
-
-const ViewPost = styled(Link)`
-  text-decoration: none;
-  font-size: 2.5rem;
-  color: black;
-  :hover {
-    color: purple;
-  }
-`;
 const Post = ({ title, content, timestamp, published, _id }: IPost) => {
   return (
     <Li>

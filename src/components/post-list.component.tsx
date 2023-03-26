@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from "react";
-import Post from "../post/post.components";
-import { IPost } from "../../App";
-import Container from "../container/container.styles";
-import styled from "styled-components";
-
+import { useState, useEffect } from "react";
+import Post from "./post.components";
+import { IPost } from "../App";
+import Container from "./styles/container.styles";
+import { origin } from "../App";
 const PostList = () => {
   //fetch posts
   useEffect(() => {
     async function getPosts() {
-      let response = await fetch(
-        "https://blog-api-production-9a5f.up.railway.app/posts/",
-        {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      let response = await fetch(`${origin}/posts/`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       let data = await response.json();
 

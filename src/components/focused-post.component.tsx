@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { IPost } from "../../App";
+import { useEffect, useState } from "react";
+import { IPost } from "../App";
 import { Params } from "react-router";
-import styled from "styled-components";
-import Container from "../container/container.styles";
+import { origin } from "../App";
+import Container from "./styles/container.styles";
+import { Content } from "./styles/focused-post.styled";
 
-const Content = styled.p`
-  margin: 2rem;
-  text-align: start;
-  overflow-wrap: break-word;
-`;
 interface IFocusedPostProps {
   readonly postId: Readonly<Params<string>>;
 }
@@ -17,16 +13,13 @@ const FocusedPost = ({ postId }: IFocusedPostProps) => {
   const [currentPost, setCurrentPost] = useState<IPost | null>(null);
   useEffect(() => {
     async function getPost() {
-      let response = await fetch(
-        `https://blog-api-production-9a5f.up.railway.app/posts/${postId.postId}`,
-        {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      let response = await fetch(`${origin}/posts/${postId.postId}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       let data = await response.json();
 
       setCurrentPost(data.post);
