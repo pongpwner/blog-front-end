@@ -1,7 +1,7 @@
 import { IPost } from "../App";
 import { ContainerFlexCol } from "./styles/container.styles";
 import { Li, Content, ViewPost } from "./styles/post.styled";
-import parse from "html-react-parser";
+
 const Post = ({
   title,
   content,
@@ -11,9 +11,11 @@ const Post = ({
   _id,
 }: IPost) => {
   function getFirstParagraph() {
-    let split1 = content.split("<p>");
-    let split2 = split1[1].split("</p>");
-    return split2[0];
+    if (content) {
+      let split1 = content.split("<p>");
+      let split2 = split1[1].split("</p>");
+      return split2[0];
+    }
   }
   const firstParagraph = getFirstParagraph();
   return (
@@ -22,9 +24,11 @@ const Post = ({
         <h1>{title}</h1>
         {
           <Content>
-            {`${firstParagraph.substring(0, 50)}  ${
-              firstParagraph.length > 50 ? "..." : ""
-            }`}
+            {firstParagraph
+              ? `${firstParagraph.substring(0, 100)}  ${
+                  firstParagraph.length > 100 ? "..." : ""
+                }`
+              : ""}
           </Content>
         }
         <span>Category: {category}</span>
