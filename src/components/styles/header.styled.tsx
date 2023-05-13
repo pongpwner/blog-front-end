@@ -13,6 +13,6 @@ export const Home = styled(Link)`
   font-weight: 900;
   font-size: 3rem;
   text-decoration: none;
-  color: black;
+  color: #f7f7f7;
   margin: 2rem 3rem;
 `;

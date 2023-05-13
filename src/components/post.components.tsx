@@ -1,15 +1,25 @@
 import { IPost } from "../App";
 import { ContainerFlexCol } from "./styles/container.styles";
 import { Li, Content, ViewPost } from "./styles/post.styled";
-
-const Post = ({ title, content, timestamp, published, _id }: IPost) => {
+import parse from "html-react-parser";
+const Post = ({
+  title,
+  content,
+  category,
+  timestamp,
+  published,
+  _id,
+}: IPost) => {
   return (
     <Li>
-      <ContainerFlexCol minWidth="15rem">
+      <ContainerFlexCol minWidth="15rem" backgroundColor="#3B3B3B">
         <h1>{title}</h1>
-        <Content>
-          {`${content.substring(0, 50)}  ${content.length > 50 ? "..." : ""}`}
-        </Content>
+        {/* <Content>
+          {`${content}  ${
+            content.length > 50 ? "..." : ""
+          }`}
+        </Content> */}
+        <span>Category: {category}</span>
         <span>
           {new Date(timestamp).toLocaleDateString("en-us", {
             year: "numeric",

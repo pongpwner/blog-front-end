@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Post from "./post.components";
 import { IPost } from "../App";
 import Container from "./styles/container.styles";
+import { ContainerGrid } from "./styles/container.styles";
 import { origin } from "../App";
 const PostList = () => {
   //fetch posts
@@ -29,18 +30,19 @@ const PostList = () => {
 
   const [posts, setPosts] = useState<[IPost]>();
   return posts ? (
-    <Container as="ul" minWidth="15rem">
+    <ContainerGrid as="ul" minWidth="15rem">
       {posts.map((post) => (
         <Post
           title={post.title}
           content={post.content}
+          category={post.category}
           _id={post._id}
           published={post.published}
           timestamp={post.timestamp}
           key={post._id}
         />
       ))}
-    </Container>
+    </ContainerGrid>
   ) : (
     <Container>no posts</Container>
   );
