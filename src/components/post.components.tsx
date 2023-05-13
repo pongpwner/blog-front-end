@@ -10,15 +10,23 @@ const Post = ({
   published,
   _id,
 }: IPost) => {
+  function getFirstParagraph() {
+    let split1 = content.split("<p>");
+    let split2 = split1[1].split("</p>");
+    return split2[0];
+  }
+  const firstParagraph = getFirstParagraph();
   return (
     <Li>
       <ContainerFlexCol minWidth="15rem" backgroundColor="#3B3B3B">
         <h1>{title}</h1>
-        {/* <Content>
-          {`${content}  ${
-            content.length > 50 ? "..." : ""
-          }`}
-        </Content> */}
+        {
+          <Content>
+            {`${firstParagraph.substring(0, 50)}  ${
+              firstParagraph.length > 50 ? "..." : ""
+            }`}
+          </Content>
+        }
         <span>Category: {category}</span>
         <span>
           {new Date(timestamp).toLocaleDateString("en-us", {
