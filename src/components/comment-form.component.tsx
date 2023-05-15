@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Params } from "react-router";
-import { Form } from "./styles/comment-form.styled";
+import { Form, NameInput, CommentTextArea } from "./styles/comment-form.styled";
 import { origin } from "../App";
 interface ICommentFormProps {
   readonly postId: Readonly<Params<string>>;
@@ -9,6 +9,7 @@ interface ICommentFormProps {
 const CommentForm = ({ postId }: ICommentFormProps) => {
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
+
   function handleChange(
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -40,7 +41,7 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
   }
   return (
     <Form action={`${origin}`} onSubmit={postComment} method="GET">
-      <input
+      <NameInput
         type="text"
         id="author"
         name="author"
@@ -48,15 +49,15 @@ const CommentForm = ({ postId }: ICommentFormProps) => {
         onChange={handleChange}
         placeholder="name"
       />
-      <textarea
+      <CommentTextArea
         name="content"
         id=""
-        cols={50}
+        cols={10}
         rows={5}
         value={content}
         placeholder="leave a comment"
         onChange={handleChange}
-      ></textarea>
+      ></CommentTextArea>
       <button type="submit">post comment</button>
     </Form>
   );

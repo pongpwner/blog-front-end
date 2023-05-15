@@ -41,5 +41,9 @@ export const ContainerGrid = styled(Container)`
 
   grid-template-columns: repeat(4, 1fr);
 `;
+export const BorderContainer = styled(Container)`
+  border-radius: 10px;
+  border: 1px solid rgb(247, 247, 247);
+`;
 
 export default Container;

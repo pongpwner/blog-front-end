@@ -3,6 +3,7 @@ import { IPost } from "../App";
 import { Params } from "react-router";
 import { origin } from "../App";
 import Container from "./styles/container.styles";
+import { BorderContainer } from "./styles/container.styles";
 import { Content } from "./styles/focused-post.styled";
 import parse from "html-react-parser";
 import COLORS from "./styles/colors";
@@ -29,7 +30,11 @@ const FocusedPost = ({ postId }: IFocusedPostProps) => {
     getPost();
   }, []);
   return currentPost ? (
-    <Container minWidth="15rem" maxWidth="70rem" backgroundColor={primary2}>
+    <BorderContainer
+      minWidth="15rem"
+      maxWidth="70rem"
+      backgroundColor={primary2}
+    >
       <h1>{currentPost.title}</h1>
       <span>
         {new Date(currentPost.timestamp).toLocaleDateString("en-us", {
@@ -40,7 +45,7 @@ const FocusedPost = ({ postId }: IFocusedPostProps) => {
       </span>
 
       <Content>{parse(currentPost.content)}</Content>
-    </Container>
+    </BorderContainer>
   ) : (
     <Container>This post does not exist</Container>
   );

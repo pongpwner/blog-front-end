@@ -9,12 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "css-loader": "^5.2.7",
     "html-react-parser": "^3.0.15",
+    "postcss-loader": "^4.3.0",
+    "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.9.0",
     "react-router-dom": "^6.9.0",
-    "styled-components": "^5.3.9"
+    "style-loader": "^2.0.0",
+    "styled-components": "^5.3.9",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
