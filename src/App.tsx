@@ -5,7 +5,8 @@ import PostPage from "./pages/post-page/post-page.component";
 import styled from "styled-components";
 import Header from "./components/header.component";
 //https://blog-api-production-9a5f.up.railway.app
-export const origin = "http://localhost:5000";
+//http://localhost:5000
+export const origin = "https://blog-api-production-9a5f.up.railway.app";
 export interface IPost {
   _id: string;
   title: string;
