@@ -1,5 +1,5 @@
 import React from "react";
-import { IComment } from "../comment-list/comment-list.component";
+
 import { ContainerFlexCol } from "./container.styles";
 import styled from "styled-components";
 
